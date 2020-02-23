@@ -3,7 +3,7 @@ from flask import request
 from functools import wraps
 from jose import jwt
 from urllib.request import urlopen
-from ..config import Auth0Config
+from config import Auth0Config
 
 
 AUTH0_DOMAIN = Auth0Config.domain
