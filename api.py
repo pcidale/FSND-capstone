@@ -25,6 +25,8 @@ def create_api():
     return api, migrate
 
 
+api, migrate = create_api()
+
+
 if __name__ == '__main__':
-    api, migrate = create_api()
     api.run()
