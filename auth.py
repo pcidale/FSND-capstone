@@ -102,7 +102,6 @@ def verify_decode_jwt(token):
                 audience=API_AUDIENCE,
                 issuer='https://' + AUTH0_DOMAIN + '/'
             )
-
             return payload
         except jwt.ExpiredSignatureError:
             raise AuthError({

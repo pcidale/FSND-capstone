@@ -12,5 +12,5 @@ class DBConfig:
 
 class Auth0Config:
     domain = os.getenv('AUTH0_DOMAIN')
-    algorithms = os.getenv('AUTH0_ALGORITHMS')
+    algorithms = [os.getenv('AUTH0_ALGORITHMS')]
     audience = os.getenv('AUTH0_AUDIENCE')
