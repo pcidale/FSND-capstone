@@ -83,10 +83,244 @@ The Casting Agency models a company that is responsible for creating movies and 
 
 ## Endpoints
 
-* GET /actors and /movies
-* DELETE /actors/<actor_id> and /movies/<movie_id>
-* POST /actors and /movies
-* PATCH /actors/<actor_id> and /movies/<movie_id>
+GET /actors
+- Fetches a dictionary of actors, represented with the id in the database, name and age
+- Request Arguments: None
+- Returns: A object containing a list of actors and a success boolean
+
+```
+GET /actors
+{
+  "actors": [
+      {
+        "age": 79,
+        "id": 2,
+        "name": "Al Pacino"
+      },
+      {
+        "age": 76,
+        "id": 1,
+        "name": "Robert De Niro"
+      }
+    ],
+  "success": true
+}
+```
+
+GET /actors/<user_id>
+- Fetches a dictionary with the specific actor, represented with the id in the database, name and age
+- Request Arguments: **actor_id** int
+- Returns: A object containing a list with the actor and a success boolean
+
+```
+GET /actors/1
+{
+  "actor": [
+    {
+      "age": 75,
+      "id": 1,
+      "name": "Robert de Niro"
+    }
+  ],
+  "success": true
+}
+```
+
+GET /movies
+- Fetches a dictionary of movies, represented with the id in the database, title, genre and a list with all the actors presented in the movie
+- Request Arguments: None
+- Returns: A object containing a list of movies and a success boolean
+
+```
+GET /movies
+{
+  "movies": [
+    {
+      "actors": [
+        {
+          "age": 75,
+          "id": 1,
+          "name": "Robert de Niro"
+        }
+      ],
+      "genre": "Drama/Crime",
+      "id": 1,
+      "title": "The Irishman"
+    }
+  ],
+  "success": true
+}
+```
+
+GET /movies/<movie_id>
+- Fetches a dictionary with the specific movie, represented with the id in the database, title, genre and a list with all the actors 
+- Request Arguments: **movie_id** int
+- Returns: A object containing a list with the movie and a success boolean
+
+```
+GET /movies/1
+{
+  "movie": {
+    "actors": [
+      {
+        "age": 75,
+        "id": 1,
+        "name": "Robert de Niro"
+      }
+    ],
+    "genre": "Drama/Crime",
+    "id": 1,
+    "title": "The Irishman"
+  },
+  "success": true
+}
+```
+
+POST /actors
+- Inserts a new actor in database
+- Request Arguments: body JSON with the necessary data (name and age)
+- Returns: the formatted object
+
+```
+POST /actors
+body {
+	"id": 1,
+	"name": "Robert De Niro",
+	"age": 75
+}
+
+{
+  "actor": [
+    {
+      "age": 75,
+      "id": 1,
+      "name": "Robert de Niro"
+    }
+  ],
+  "success": true
+}
+```
+
+POST /movies
+- Inserts a new movie in database
+- Request Arguments: body JSON with the necessary data (title, genre and a list of actors ids)
+- Returns: the formatted object
+
+```
+POST /movies
+body {
+	"id": 1,
+	"title": "The Irishman",
+	"genre": "Drama/Crime",
+	"actors": [1, 2]
+}
+
+{
+  "movie": [
+    {
+      "actors": [
+        {
+          "age": 75,
+          "id": 1,
+          "name": "Robert De Niro"
+        },
+        {
+          "age": 79,
+          "id": 2,
+          "name": "Al Pacino"
+        }
+      ],
+      "genre": "Drama/Crime",
+      "id": 1,
+      "title": "The Irishman"
+    }
+  ],
+  "success": true
+}
+```
+
+PATCH /actors/<actor_id>
+- Modifies an actor in database
+- Request Arguments: body JSON with the new data (name and/or age)
+- Returns: the formatted object
+
+```
+PATCH /actors/1
+body {
+	"name": "Robert Anthony De Niro Jr",
+	"age": 76
+}
+
+{
+  "actor": {
+    "age": 76,
+    "id": 1,
+    "name": "Robert Anthony De Niro Jr"
+  },
+  "success": true
+}
+```
+
+PATCH /movies/<movie_id>
+- Modifies a movie in database
+- Request Arguments: body JSON with the necessary data (title, genre and/or a list of actors ids)
+- Returns: the formatted object
+
+```
+PATCH /movies/1
+body {
+	"actors": [1, 2]
+}
+
+{
+  "movie": [
+    {
+      "actors": [
+        {
+          "age": 76,
+          "id": 1,
+          "name": "Robert Anthony De Niro Jr"
+        },
+        {
+          "age": 79,
+          "id": 2,
+          "name": "Al Pacino"
+        }
+      ],
+      "genre": "Drama/Crime",
+      "id": 1,
+      "title": "The Irishman"
+    }
+  ],
+  "success": true
+}
+```
+
+DELETE /actors/<actor_id>
+- Deletes an actor in database
+- Request Arguments: **actor_id** int
+- Returns: A object containing the id of the deleted actor and a message
+
+```
+DELETE /actors/1
+{
+  "actor_id": 1,
+  "success": true
+}
+```
+
+DELETE /movies/<movie_id>
+- Deletes a movie in database
+- Request Arguments: **movie_id** int
+- Returns: A object containing the id of the deleted movie and a message
+
+```
+DELETE /movies/1
+{
+  "movie_id": 1,
+  "success": true
+}
+```
 
 ## Testing
 
