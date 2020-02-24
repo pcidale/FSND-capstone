@@ -10,7 +10,8 @@ def setup_db(app):
     # db.create_all()
 
 
-movie_cast = db.Table('movie_cast',
+movie_cast = db.Table(
+    'movie_cast',
     db.Column('actor_id', db.Integer, db.ForeignKey('actors.id')),
     db.Column('movie_id', db.Integer, db.ForeignKey('movies.id'))
 )
