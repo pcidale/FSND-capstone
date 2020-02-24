@@ -15,6 +15,7 @@ def setup_db(app):
     db.init_app(app)
     db.drop_all()
     db.create_all()
+    return db
 
 
 movie_cast = db.Table('movie_cast',

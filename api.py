@@ -18,9 +18,9 @@ def create_api():
     api.register_error_handler(500, internal_server_error)
 
     api.config.from_object(DBConfig)
-    setup_db(api)
+    db = setup_db(api)
     CORS(api)
-    migrate = Migrate(api)
+    migrate = Migrate(api, db)
 
     return api, migrate
 
