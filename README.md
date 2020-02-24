@@ -109,7 +109,7 @@ GET /actors
 
 GET /actors/<user_id>
 - Fetches a dictionary with the specific actor, represented with the id in the database, name and age
-- Request Arguments: user id
+- Request Arguments: **actor_id** int
 - Returns: A object containing a list with the actor and a success boolean
 
 ```
@@ -154,7 +154,7 @@ GET /movies
 
 GET /movies/<movie_id>
 - Fetches a dictionary with the specific movie, represented with the id in the database, title, genre and a list with all the actors 
-- Request Arguments: movie id
+- Request Arguments: **movie_id** int
 - Returns: A object containing a list with the movie and a success boolean
 
 ```
@@ -239,9 +239,88 @@ body {
 }
 ```
 
-PATCH /actors/<actor_id> and /movies/<movie_id>
+PATCH /actors/<actor_id>
+- Modifies an actor in database
+- Request Arguments: body JSON with the new data (name and/or age)
+- Returns: the formatted object
 
-* DELETE /actors/<actor_id> and /movies/<movie_id>
+```
+PATCH /actors/1
+body {
+	"name": "Robert Anthony De Niro Jr",
+	"age": 76
+}
+
+{
+  "actor": {
+    "age": 76,
+    "id": 1,
+    "name": "Robert Anthony De Niro Jr"
+  },
+  "success": true
+}
+```
+
+PATCH /movies/<movie_id>
+- Modifies a movie in database
+- Request Arguments: body JSON with the necessary data (title, genre and/or a list of actors ids)
+- Returns: the formatted object
+
+```
+PATCH /movies/1
+body {
+	"actors": [1, 2]
+}
+
+{
+  "movie": [
+    {
+      "actors": [
+        {
+          "age": 76,
+          "id": 1,
+          "name": "Robert Anthony De Niro Jr"
+        },
+        {
+          "age": 79,
+          "id": 2,
+          "name": "Al Pacino"
+        }
+      ],
+      "genre": "Drama/Crime",
+      "id": 1,
+      "title": "The Irishman"
+    }
+  ],
+  "success": true
+}
+```
+
+DELETE /actors/<actor_id>
+- Deletes an actor in database
+- Request Arguments: **actor_id** int
+- Returns: A object containing the id of the deleted actor and a message
+
+```
+DELETE /actors/1
+{
+  "actor_id": 1,
+  "success": true
+}
+```
+
+DELETE /movies/<movie_id>
+- Deletes a movie in database
+- Request Arguments: **movie_id** int
+- Returns: A object containing the id of the deleted movie and a message
+
+```
+DELETE /movies/1
+{
+  "movie_id": 1,
+  "success": true
+}
+```
 
 ## Testing
 
