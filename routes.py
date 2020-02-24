@@ -189,7 +189,7 @@ def delete_movies(movie_id):
         movie.delete()
         return jsonify({
             'success': True,
-            'actor_id': movie_id
+            'movie_id': movie_id
         }), 200
     else:
         abort(404, f'Movie id {movie_id} not found')
