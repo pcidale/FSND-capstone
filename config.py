@@ -5,7 +5,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 class DBConfig:
     DEBUG = True
-    SECRET_KEY = os.urandom(32)
+    SECRET_KEY = os.urandom(32)  # TODO: Change secret
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
 
