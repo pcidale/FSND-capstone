@@ -83,10 +83,165 @@ The Casting Agency models a company that is responsible for creating movies and 
 
 ## Endpoints
 
-* GET /actors and /movies
+GET /actors
+- Fetches a dictionary of actors, represented with the id in the database, name and age
+- Request Arguments: None
+- Returns: A object containing a list of actors and a success boolean
+
+```
+GET /actors
+{
+  "actors": [
+      {
+        "age": 79,
+        "id": 2,
+        "name": "Al Pacino"
+      },
+      {
+        "age": 76,
+        "id": 1,
+        "name": "Robert De Niro"
+      }
+    ],
+  "success": true
+}
+```
+
+GET /actors/<user_id>
+- Fetches a dictionary with the specific actor, represented with the id in the database, name and age
+- Request Arguments: user id
+- Returns: A object containing a list with the actor and a success boolean
+
+```
+GET /actors/1
+{
+  "actor": [
+    {
+      "age": 75,
+      "id": 1,
+      "name": "Robert de Niro"
+    }
+  ],
+  "success": true
+}
+```
+
+GET /movies
+- Fetches a dictionary of movies, represented with the id in the database, title, genre and a list with all the actors presented in the movie
+- Request Arguments: None
+- Returns: A object containing a list of movies and a success boolean
+
+```
+GET /movies
+{
+  "movies": [
+    {
+      "actors": [
+        {
+          "age": 75,
+          "id": 1,
+          "name": "Robert de Niro"
+        }
+      ],
+      "genre": "Drama/Crime",
+      "id": 1,
+      "title": "The Irishman"
+    }
+  ],
+  "success": true
+}
+```
+
+GET /movies/<movie_id>
+- Fetches a dictionary with the specific movie, represented with the id in the database, title, genre and a list with all the actors 
+- Request Arguments: movie id
+- Returns: A object containing a list with the movie and a success boolean
+
+```
+GET /movies/1
+{
+  "movie": {
+    "actors": [
+      {
+        "age": 75,
+        "id": 1,
+        "name": "Robert de Niro"
+      }
+    ],
+    "genre": "Drama/Crime",
+    "id": 1,
+    "title": "The Irishman"
+  },
+  "success": true
+}
+```
+
+POST /actors
+- Inserts a new actor in database
+- Request Arguments: body JSON with the necessary data (name and age)
+- Returns: the formatted object
+
+```
+POST /actors
+body {
+	"id": 1,
+	"name": "Robert De Niro",
+	"age": 75
+}
+
+{
+  "actor": [
+    {
+      "age": 75,
+      "id": 1,
+      "name": "Robert de Niro"
+    }
+  ],
+  "success": true
+}
+```
+
+POST /movies
+- Inserts a new movie in database
+- Request Arguments: body JSON with the necessary data (title, genre and a list of actors ids)
+- Returns: the formatted object
+
+```
+POST /movies
+body {
+	"id": 1,
+	"title": "The Irishman",
+	"genre": "Drama/Crime",
+	"actors": [1, 2]
+}
+
+{
+  "movie": [
+    {
+      "actors": [
+        {
+          "age": 75,
+          "id": 1,
+          "name": "Robert De Niro"
+        },
+        {
+          "age": 79,
+          "id": 2,
+          "name": "Al Pacino"
+        }
+      ],
+      "genre": "Drama/Crime",
+      "id": 1,
+      "title": "The Irishman"
+    }
+  ],
+  "success": true
+}
+```
+
+PATCH /actors/<actor_id> and /movies/<movie_id>
+
 * DELETE /actors/<actor_id> and /movies/<movie_id>
-* POST /actors and /movies
-* PATCH /actors/<actor_id> and /movies/<movie_id>
 
 ## Testing
 
