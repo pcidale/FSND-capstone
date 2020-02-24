@@ -1,6 +1,17 @@
 # FSND Capstone: Casting Agency
 **API link:** (https://pcidale-fsnd-capstone.herokuapp.com/)
 
+## Scope and Motivation
+
+The scope of this project was suggested by the Udacity team to put into practice all modules that we studied so far:
+
+* SQL and Data Modeling for the Web
+* API Development and Documentation
+* Identity and Access  Management
+* Server Deployment, Containerization and Testing
+
+In addition, it's been used Postman Collections for testing all API’s resources and Heroku for deployment.
+
 ## Getting Started
 
 ### Installing Dependencies
