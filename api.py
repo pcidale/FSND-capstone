@@ -1,6 +1,5 @@
 from flask import Flask
 from flask_cors import CORS
-from flask_migrate import Migrate
 from config import DBConfig
 from models import setup_db
 from routes import (api_blueprint, bad_request, page_not_found,
@@ -18,14 +17,13 @@ def create_api():
     api.register_error_handler(500, internal_server_error)
 
     api.config.from_object(DBConfig)
-    db = setup_db(api)
+    setup_db(api)
     CORS(api)
-    migrate = Migrate(api, db)
 
-    return api, migrate
+    return api
 
 
-api, migrate = create_api()
+api = create_api()
 
 
 if __name__ == '__main__':
