@@ -8,7 +8,7 @@ from routes import (api_blueprint, bad_request, page_not_found,
 
 def create_api():
     api = Flask(__name__)
-    
+
     api.register_blueprint(api_blueprint, url_prefix='/api')
     api.register_error_handler(400, bad_request)
     api.register_error_handler(401, handle_auth_error)
