@@ -10,7 +10,7 @@ The scope of this project was suggested by the Udacity team to put into practice
 * Identity and Access  Management
 * Server Deployment, Containerization and Testing
 
-In addition, it's been used Postman Collections for testing all API’s resources and Heroku for deployment.
+In addition, Postman Collections was used to test all the features of the API and Heroku for deployment.
 
 ## Getting Started
 
