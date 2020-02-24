@@ -72,7 +72,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\": \"Robert de Niro\",\n\t\"age\": 75\n}",
+							"raw": "{\n\t\"id\": 1,\n\t\"name\": \"Robert de Niro\",\n\t\"age\": 75\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1471,6 +1471,161 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "producer end",
+			"item": [
+				{
+					"name": "/actors/1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "dacd3efd-10e5-469f-8f7c-38707e4221b0",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/actors/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"actors",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actors/2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "dacd3efd-10e5-469f-8f7c-38707e4221b0",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/actors/2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"actors",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/movies/1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5468f6ff-4680-4bff-98c4-7be7cd0908bc",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/movies/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"movies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik16WkNOVVF4UlVNeU5rTkJSVVU1TkRRME5qVXhNamt4UVRjek5FTXdOMEl6TlRGRFF6RTRNZyJ9.eyJpc3MiOiJodHRwczovL3BjaWRhbGUtZGV2LmV1LmF1dGgwLmNvbS8iLCJzdWIiOiJnb29nbGUtb2F1dGgyfDEwMjYzNDY5MDI5NDA2Mzk3NDE0MiIsImF1ZCI6WyJmc25kLWNhcHN0b25lLWFwaSIsImh0dHBzOi8vcGNpZGFsZS1kZXYuZXUuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU4MjUxMjk4MCwiZXhwIjoxNTgyNTk5MzgwLCJhenAiOiI4NTViUndZSm1nbDUyZWxjM2tzOUp1dXpKV1JkbkRaYyIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6YWN0b3JzIiwiZGVsZXRlOm1vdmllcyIsImdldDphY3RvcnMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiLCJwb3N0Om1vdmllcyJdfQ.MzTAYvwscKfoR0w_Xt7vkeRdlaSkX1ww8wRRD4SqsvrGvLL0DXRVS9wtEbmERIWLzP938qC0aOqklBAqSbYvvhi_yn07wOo-ymxQmE5yPzTGQb8XV9EAiBcl3GB9tKCX70JX3lfjkMoVpz2T1JLJDFlxBwmbN9efeIjYg8X2KZM9GRq0k-h58pGqXNrpsMIz16F56LehMKbPd6gVqoX40eRV6DkK5sz5kN_-CrKvyNTJft_TsbqHXD2P84KMr9JLbnJOgIWhmUZEZFvp7S4pheYcHunMapmTnw-vhXj6vKusA_cD2opL6IEyjc6iUu7pMlCfF7p0IfOvwh2lrdtPYQ",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e6c3b61d-1feb-48ce-968f-428b20a6bbb6",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "dde26033-a1ac-4756-976a-54b274b054a5",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"event": [
@@ -1497,7 +1652,7 @@
 	],
 	"variable": [
 		{
-			"id": "107fe7c2-8f74-478d-96c7-49ac5dd7925e",
+			"id": "583a31b3-cf04-44c8-bc2a-d496597df794",
 			"key": "host",
 			"value": "https://pcidale-fsnd-capstone.herokuapp.com/api",
 			"type": "string"
